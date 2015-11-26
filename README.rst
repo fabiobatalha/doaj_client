@@ -56,3 +56,28 @@ Retrieving journals from a search::
     Yesterday and Today
     ...
     >>>
+
+Retrieving an application::
+
+    >>> from doaj.applications import Applications
+    >>> applications = Applications(usertoken='your user token')
+    >>> application = applications.get('c644fed15b684283b2fc269df1502000')
+    >>> print i['bibjson']['title']
+    u"RAUSP: Revista de Administração da Universidade de São Paulo"
+
+Retrieving application from a search::
+
+    >>> from doaj.applications import Applications
+    >>> applications = Applications(usertoken='your user token')
+    >>> for i in applications.search('provider:scielo'):
+    ...  print i['bibjson']['title']
+    ...
+    RAUSP: Revista de Administração da Universidade de São Paulo
+    Cuadernos del CILHA
+    Revista Brasileira de Medicina do Esporte
+    T'inkazos
+    Horizontes Antropológicos
+    Jornal Brasileiro de Patologia e Medicina Laboratorial
+    Novos Estudos Cebrap
+    ...
+    >>>

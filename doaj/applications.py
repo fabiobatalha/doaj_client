@@ -3,7 +3,7 @@ from doaj.client import Client, PAGESIZE, must_have_token
 
 class Applications(Client):
 
-    endpoint = "applications/"
+    endpoint = "application/"
     search_endpoint = "search/applications/"
 
     @must_have_token
@@ -22,7 +22,7 @@ class Applications(Client):
             raise ValueError('pagesize must be between 10 and 100')
 
         page = 1
-        payload = {'pageSize': pagesize, 'page': page}
+        payload = {'pageSize': pagesize, 'page': page, 'api_key': self.token}
         while True:
             url = self.api_url+self.search_endpoint+query
 
@@ -43,5 +43,6 @@ class Applications(Client):
         Retrieve one journal related to the given journal identification.
         """
         url = self.api_url+self.endpoint+journal_id
+        payload = {'api_key': self.token}
 
-        return self.request_get(url)
+        return self.request_get(url, payload=payload)
