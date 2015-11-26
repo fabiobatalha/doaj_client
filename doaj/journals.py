@@ -1,10 +1,10 @@
 # coding: utf-8
 from doaj.client import Client, PAGESIZE
 
-class Articles(Client):
+class Journals(Client):
 
-    endpoint = "articles/"
-    search_endpoint = "search/articles/"
+    endpoint = "journals/"
+    search_endpoint = "search/journals/"
 
     def search(self, query, sort=None, pagesize=PAGESIZE):
         """
@@ -26,7 +26,7 @@ class Articles(Client):
             url = self.api_url+self.search_endpoint+query
 
             response = self.request_get(url, payload=payload)
-            
+
             if len(response.get('results', [])) == 0:
                 break
 
@@ -36,10 +36,10 @@ class Articles(Client):
             payload['page'] += 1
 
 
-    def get(self, article_id):
+    def get(self, journal_id):
         """
-        Retrieve one article related to the given article identification.
+        Retrieve one journal related to the given journal identification.
         """
-        url = self.api_url+self.endpoint+article_id
+        url = self.api_url+self.endpoint+journal_id
 
         return self.request_get(url)
