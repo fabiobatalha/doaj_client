@@ -9,7 +9,8 @@ Python Cliente library for DOAJ API
 HowTo
 -----
 
-::
+Retrieving an article::
+
     >>> from doaj.articles import Articles
     >>> articles = Articles()
     >>> article = articles.get('255723f2f2374f1fbb8865eeb044c9d2')
