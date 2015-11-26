@@ -18,3 +18,19 @@ Retrieving an article::
     [u'admin', u'last_updated', u'id', u'bibjson', u'created_date']
     >>> article['bibjson']['title']
     u'Efeitos do resfriamento e aquecimento articular no desempenho funcional do ombro'
+
+Retrieving articles from a search::
+
+    >>> from doaj.articles import Articles
+    >>> articles = Articles()
+    >>> for art in articles.search('issn:1806-9940'):
+    ...  print art['bibjson']['title'][0:30]
+    ...
+    Efeito da oferta dietética de
+    Propriedades mecânicas do músc
+    Avaliação da reprodutibilidade
+    Suplementação de creatina e tr
+    Incidência de lesões nos jogad
+    Influência da utilização da ór
+    ...
+    >>>
