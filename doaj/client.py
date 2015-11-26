@@ -1,8 +1,18 @@
 # coding: utf-8
 import requests
+from functools import wraps
 
 VERSION = 'v1'
 PAGESIZE = 10
+
+def must_have_token(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if not args[0].token:
+            raise ValueError('You must specify a valid user token to use this method')
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
 
 class Client(object):
 
