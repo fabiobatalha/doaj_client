@@ -35,11 +35,6 @@ class ApplicationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             ap.search('id:xxx')
 
-    def test_get_application_not_available(self):
-        response = self.ap.get('not available')
-
-        self.assertEqual(response['status'], 'not_found')
-
     def test_search_invalid_page_size(self):
         
         with self.assertRaises(ValueError):
