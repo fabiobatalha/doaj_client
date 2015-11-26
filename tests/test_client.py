@@ -35,4 +35,22 @@ class ArticlesTest(unittest.TestCase):
         response = self.ac.get('not available')
 
         self.assertEqual(response['status'], 'not_found')
-    
+
+    def test_search_invalid_page_size(self):
+        
+        with self.assertRaises(ValueError):
+            [x for x in self.ac.search('issn:1806-9940', pagesize='invalid')]
+
+    def test_search_invalid_page_size_1(self):
+        """
+        not between 10 and 100.
+        """
+        with self.assertRaises(ValueError):
+            [x for x in self.ac.search('issn:1806-9940', pagesize=9)]
+
+    def test_search_invalid_page_size_2(self):
+        """
+        not between 10 and 100.
+        """
+        with self.assertRaises(ValueError):
+            [x for x in self.ac.search('issn:1806-9940', pagesize=101)]

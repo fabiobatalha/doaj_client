@@ -2,6 +2,7 @@
 import requests
 
 VERSION = 'v1'
+PAGESIZE = 10
 
 class Client(object):
 
