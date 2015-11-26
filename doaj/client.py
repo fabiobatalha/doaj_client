@@ -7,22 +7,24 @@ class Client(object):
 
     def __init__(self, usertoken=None):
         self.token = usertoken
-        self.url = "https://doaj.org/api/%s/" % VERSION
+        self.api_url = 'https://doaj.org/api/%s/' % VERSION
 
     def ping(self):
 
-        response = self.request("swagger.json", raw=True)
+        url = self.api_url+'swagger.json'
+        response = self.request_get(url, raw=True)
 
         if response.status_code == 200:
             return True
 
         return False
 
-    def request(self, querystring, raw=False):
-        
-        url = self.url+querystring
+    def request_get(self, url, payload=None, raw=False):
 
-        response = requests.get(url)
+        if not isinstance(payload, dict):
+            payload = {}
+
+        response = requests.get(url, params=payload)
 
         if raw:
             return response
