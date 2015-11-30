@@ -30,12 +30,12 @@ class Client(object):
 
         return False
 
-    def request_get(self, url, payload=None, raw=False):
+    def request_get(self, url, payload=None, raw=False, verify_ssl=False):
 
         if not isinstance(payload, dict):
             payload = {}
 
-        response = requests.get(url, params=payload)
+        response = requests.get(url, params=payload, verify=verify_ssl)
 
         if raw:
             return response

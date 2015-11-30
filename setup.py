@@ -17,7 +17,7 @@ test_requires = []
 
 setup(
     name="doaj_client",
-    version='0.1',
+    version='0.2',
     description="A client library for DOAJ API",
     author="Fabio Batalha",
     author_email="fabiobatalha@gmail.com",
